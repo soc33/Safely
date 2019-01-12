@@ -1,3 +1,24 @@
+@font-face {
+    font-family: disney;
+    src: url('../font/Walter.ttf');
+}
 body {
     background: aqua;
+}
+/* .whole {
+    height: 100%;
+} */
+/* .middle {
+    margin-top: 30%;
+} */
+.whole {
+    height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%; 
+    font-family: disney;
+}
+.whole p {
+    margin: 0 
 }
