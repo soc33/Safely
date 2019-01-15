@@ -1,24 +1,27 @@
 @font-face {
-    font-family: disney;
-    src: url('../font/Walter.ttf');
+    font-family: title;
+    src: url('../font/Road\ Trip.ttf');
+}
+@font-face {
+    font-family: body;
+    src: url('../font/atwriter.ttf');
 }
 body {
     background: aqua;
+    font-family: body;
 }
-/* .whole {
-    height: 100%;
-} */
-/* .middle {
-    margin-top: 30%;
-} */
-.whole {
-    height: 10em;
-    /* display: flex; */
-    align-items: center;
-    justify-content: center;
-    margin-top: 10%; 
-    font-family: disney;
+h1 {
+    font-size: 5rem;
+}
+
+.header {
+    font-family: title;
+    height: 100px;
 }
 .whole h1 {
-    margin: 0 
+    margin: 0;
+    font-size: 120px;
+}
+.nowContainer {
+    display: none;
 }
