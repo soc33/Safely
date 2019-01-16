@@ -25,12 +25,12 @@
 </head>
 
 <body>
-    <div class="mx-auto w-full px-4 mb-3 bg-red header">
-        <h1><i class="fas fa-child"></i> Safely</h1>
+    <div class="mx-auto w-full px-4 mb-3 bg-transparent header">
+        <h1 class=""><i class="fas fa-child"></i> Safely</h1>
     </div>
-    <div class="flex mb-4 px-4 bg-blue">
+    <div class="flex mb-4 px-4 bg-transparent">
 
-        <div class="w-1/4 bg-green px-46 ">
+        <div class="lg:w-1/4 bg-transparent px-46 beginningForm sm:w-full ">
             <div class="w-full px-3 mb-6 inline-flex">
                 <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-dark text-white font-bold py-6 px-6 rounded-full"
                     id="check-if-safe-now">Check if I'm safe right NOW!</button>
@@ -39,9 +39,14 @@
 
                 <h1 class="text-5xl text-center">Or</h1> <br><br>
             </div>
+
+            <div class="w-full px-3 mb-6 inline-flex">
+                <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-dark text-white font-bold py-6 px-6 rounded-full"
+                    id="check-if-safe-later">Check if another place is safe!</button>
+            </div>
             <div class="w-full  px-3 mb-6 mt-6">
 
-                <form class="w-full max-w-md justify-center">
+                <form class="w-full max-w-md justify-center zipcodeForm">
 
                     <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
                         Zip
@@ -52,7 +57,7 @@
                         id="grid-zip" type="text" placeholder="90210">
                         <div class="w-full px-3 mb-6  inline-flex">
                     <button class="bg-blue  mx-auto justify-center mt-6 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full"
-                        id="check-if-safe-later">Check
+                        id="check-if-safe-zipcode">Check
                         if I will be safe!</button></div><br><br><br><br>
                 </form>
             </div>
@@ -127,7 +132,7 @@
             <div class="flex">
                 <div class="w-2/3 bg-purple">
                     <div class="map">map</div>
-                    <div class="comment-view">comments</div>
+                    <div id="comment-view">comments</div>
                 </div>
                 <div class="w-1/3 bg-red ">graph of user opinions </div>
             </div>

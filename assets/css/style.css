@@ -6,17 +6,18 @@
     font-family: body;
     src: url('../font/atwriter.ttf');
 }
+
 body {
     background: aqua;
     font-family: body;
 }
 h1 {
-    font-size: 5rem;
+    font-size: 8em;
 }
 
 .header {
     font-family: title;
-    height: 100px;
+    height: 200px;
 }
 .whole h1 {
     margin: 0;
@@ -24,4 +25,18 @@ h1 {
 }
 .nowContainer {
     display: none;
+}
+.laterContainer {
+    display: none;
+}
+.zipcodeForm {
+    display: none;
+}
+@media screen and (max-width: 576px) {
+    .header {
+        height: 100px;
+    }
+    h1 {
+        font-size: 4.5em;
+    }
 }

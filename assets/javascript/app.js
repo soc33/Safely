@@ -6,45 +6,66 @@ var config = {
     projectId: "project-1-a0bb8",
     storageBucket: "project-1-a0bb8.appspot.com",
     messagingSenderId: "262887889800"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
-  var database = firebase.database();
+var database = firebase.database();
 
-  var zipCode = ""; 
+$(document).ready(function () {
 
-// When the check-if-safe button is clicked it adds the zip code to the firebase database
-  $("#check-if-safe").on("click", function (event) {
-      event.preventDefault();
+    $("#check-if-safe-now").on("click", function () {
+        $(".nowContainer").css("display", "block");
+        $(".laterContainer").css("display", "none");
+        $(".beginningForm").css("border", "solid grey 4px");
+    });
+    $("#check-if-safe-later").on("click", function () {
+        $(".nowContainer").css("display", "none");
+        $(".zipcodeForm").css("display", "block");
+        $("#check-if-safe-later").css("display", "none");
 
-      zipCode = $("#grid-zip").val().trim();
+    });
+    $("#check-if-safe-zipcode").on("click", function (e) {
+        e.preventDefault();
+        $(".laterContainer").css("display", "block");
+        $(".nowContainer").css("display", "none");
 
-      database.ref().push({
-          zipCode: zipCode,
-          dateAdded: firebase.database.ServerValue.TIMESTAMP
-      });
-  });
+    });
 
-// Firebase event listener .on(child_added)
-  database.ref().on("child_added", function (snapshot) {
-    var snap = snapshot.val();
-    console.log(snap);
+    var zipCode = "";
 
-// This function will display...
-    $("#comment-view").append();
+    // When the check-if-safe button is clicked it adds the zip code to the firebase database
+    $("#check-if-safe").on("click", function (event) {
+        event.preventDefault();
 
-// Below throws an error message if something has gone wrong
-  }, function (errorObject) {
-      console.log("Errors handled: ", + errorObject.code);
-  });
+        zipCode = $("#grid-zip").val().trim();
 
-// Ajax call
-var apiKey = "";
-var queryURL = "";
+        database.ref().push({
+            zipCode: zipCode,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
+    });
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function(response) {
-    console.log(response);
+    // Firebase event listener .on(child_added)
+    database.ref().on("child_added", function (snapshot) {
+        var snap = snapshot.val();
+        console.log(snap);
+
+        // This function will display...
+        $("#comment-view").append();
+
+        // Below throws an error message if something has gone wrong
+    }, function (errorObject) {
+        console.log("Errors handled: ", + errorObject.code);
+    });
+
+    // Ajax call
+    var apiKey = "";
+    var queryURL = "";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+    });
 });
