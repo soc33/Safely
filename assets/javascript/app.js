@@ -37,3 +37,14 @@ var config = {
   }, function (errorObject) {
       console.log("Errors handled: ", + errorObject.code);
   });
+
+// Ajax call
+var apiKey = "";
+var queryURL = "";
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function(response) {
+    console.log(response);
+});
