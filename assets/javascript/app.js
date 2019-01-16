@@ -11,7 +11,7 @@ var config = {
 
   var database = firebase.database();
 
-  var zipCode = "";
+  var zipCode = ""; 
 
 // When the check-if-safe button is clicked it adds the zip code to the firebase database
   $("#check-if-safe").on("click", function (event) {
