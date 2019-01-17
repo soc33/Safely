@@ -11,6 +11,8 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+
+
 $(document).ready(function () {
 
     $("#check-if-safe-now").on("click", function () {

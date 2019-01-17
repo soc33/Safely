@@ -1,11 +1,16 @@
+/* -------typography----------- */
+
+/* safely title */
 @font-face {
     font-family: title;
     src: url('../font/Road\ Trip.ttf');
 }
+/* body font */
 @font-face {
     font-family: body;
     src: url('../font/atwriter.ttf');
 }
+/* body  */
 
 body {
     background: aqua;
@@ -23,6 +28,8 @@ h1 {
     margin: 0;
     font-size: 120px;
 }
+
+/* contents containers */
 .nowContainer {
     display: none;
 }
@@ -32,6 +39,9 @@ h1 {
 .zipcodeForm {
     display: none;
 }
+
+
+/* media query */
 @media screen and (max-width: 576px) {
     .header {
         height: 100px;
