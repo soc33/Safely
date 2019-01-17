@@ -1,27 +1,52 @@
+/* -------typography----------- */
+
+/* safely title */
 @font-face {
     font-family: title;
     src: url('../font/Road\ Trip.ttf');
 }
+/* body font */
 @font-face {
     font-family: body;
     src: url('../font/atwriter.ttf');
 }
+/* body  */
+
 body {
     background: aqua;
     font-family: body;
 }
 h1 {
-    font-size: 5rem;
+    font-size: 8em;
 }
 
 .header {
     font-family: title;
-    height: 100px;
+    height: 200px;
 }
 .whole h1 {
     margin: 0;
     font-size: 120px;
 }
+
+/* contents containers */
 .nowContainer {
     display: none;
+}
+.laterContainer {
+    display: none;
+}
+.zipcodeForm {
+    display: none;
+}
+
+
+/* media query */
+@media screen and (max-width: 576px) {
+    .header {
+        height: 100px;
+    }
+    h1 {
+        font-size: 4.5em;
+    }
 }
