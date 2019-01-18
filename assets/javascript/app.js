@@ -30,7 +30,24 @@ $(document).ready(function () {
         e.preventDefault();
         $(".laterContainer").css("display", "block");
         $(".nowContainer").css("display", "none");
+        var apiKey = "J4QW6QeT5JkCYP4vnCmUTpdF4";
+        var queryURL = "https://data.cityoforlando.net/resource/6qd7-sr7g.json?$$app_token=" + apiKey + "$where=date between '2015-01-10T12:00:00' and '2015-01-10T14:00:00'";
 
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+        });
+    });
+
+    $(".addComment").on("click", function (e) {
+        e.preventDefault();
+        var comment = $("#newComment").val().trim();
+        database.ref().push({
+            comment: comment
+        });
+        // $(".comment-view").append(comment);
     });
 
     var zipCode = "";
@@ -50,24 +67,65 @@ $(document).ready(function () {
     // Firebase event listener .on(child_added)
     database.ref().on("child_added", function (snapshot) {
         var snap = snapshot.val();
+        var deleteKey = snapshot.key;
         console.log(snap);
 
         // This function will display...
-        $("#comment-view").append();
+        $(".comment-view").append("<br> <div> SampleUserName: " + snap.comment + "  <button id='" + deleteKey + "' class='delete'>Delete</button></div>");
 
         // Below throws an error message if something has gone wrong
     }, function (errorObject) {
         console.log("Errors handled: ", + errorObject.code);
     });
 
-    // Ajax call
-    var apiKey = "";
-    var queryURL = "";
+    $(".comment-view").on("click", ".delete", function (e) {
+        e.preventDefault();
+        var keyToDelete = $(this).attr("id");
+        database.ref(keyToDelete).remove()
+            .then($(this).closest('div').remove());
+    })
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-    });
+    // Ajax call
+
+    // mapboxgl.accessToken = 'pk.eyJ1Ijoia2l0eWthdDMyNCIsImEiOiJjanIxOWE1cTgwaGNoM3p0Y2RjcjRpOWU1In0.ECL7UrpjDznPgiDynCKVmg';
+    // var map = new mapboxgl.Map({
+    //     container: 'map', // container id
+    //     style: 'mapbox://styles/mapbox/streets-v9',
+    //     center: [-96, 37.8], // starting position
+    //     zoom: 3 // starting zoom
+    // });
+
+    // // Add geolocate control to the map.
+    // map.addControl(new mapboxgl.GeolocateControl({
+    //     positionOptions: {
+    //         enableHighAccuracy: true
+    //     },
+    //     trackUserLocation: true
+    // }));
+
+    // map.addControl(new mapboxgl.AttributionControl({
+    //     compact: true
+    // }));
+    // $("#map").append(map);
+
+    // var options = {
+    //     enableHighAccuracy: true,
+    //     timeout: 5000,
+    //     maximumAge: 0
+    //   };
+
+    //   function success(pos) {
+    //     var crd = pos.coords;
+
+    //     console.log('Your current position is:');
+    //     console.log(`Latitude : ${crd.latitude}`);
+    //     console.log(`Longitude: ${crd.longitude}`);
+    //     console.log(`More or less ${crd.accuracy} meters.`);
+    //   }
+
+    //   function error(err) {
+    //     console.warn(`ERROR(${err.code}): ${err.message}`);
+    //   }
+
+    //   mapboxgl.getCurrentPosition(success, error, options);
 });
