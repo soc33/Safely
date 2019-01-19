@@ -13,20 +13,36 @@
 /* body  */
 
 body {
-    background: aqua;
+    /* background: aqua; */
     font-family: body;
 }
 h1 {
     font-size: 8em;
 }
 
-.header {
+/* header */
+.mainHeader {
+    background-image: url(../images/dove2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* height: 30vh; */
     font-family: title;
-    height: 200px;
+    color: #FFFF99;
+    text-shadow: -10px 2px 2px #000000;
+    -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 76%, 35% 100%, 0 73%, 0 0);
+clip-path: polygon(50% 0%, 100% 0, 100% 76%, 35% 100%, 0 73%, 0 0);
+
 }
 .whole h1 {
     margin: 0;
     font-size: 120px;
+    
+}
+/* control panel */
+.beginningForm {
+    /* border: solid gray 3px; */
+   
+
 }
 
 /* contents containers */
@@ -38,6 +54,16 @@ h1 {
 }
 .zipcodeForm {
     display: none;
+}
+
+/* resource container */
+.resourceContainer {
+    -webkit-clip-path: polygon(70% 0, 100% 17%, 100% 100%, 0 100%, 0 14%);
+    clip-path: polygon(70% 0, 100% 17%, 100% 100%, 0 100%, 0 14%);
+    display: hidden;
+
+
+
 }
 
 

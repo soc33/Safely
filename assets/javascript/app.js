@@ -20,7 +20,7 @@ $(document).ready(function () {
     $("#check-if-safe-now").on("click", function () {
         $(".nowContainer").css("display", "block");
         $(".laterContainer").css("display", "none");
-        $(".beginningForm").css("border", "solid grey 4px");
+        // $(".beginningForm").css("border", "solid grey 4px");
     });
 
     // Once clicked, this will display the zipcode form and enter button
@@ -42,6 +42,12 @@ $(document).ready(function () {
     }).then(function (response) {
         console.log(response);
     });
+    $("#check-for-resources").on("click", function (e) {
+        e.preventDefault();
+        $(".resourceContainer").toggle();
+    })
+
+
 
     var zipInput = $("#grid-zip").val().trim();
 
