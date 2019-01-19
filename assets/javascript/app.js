@@ -15,51 +15,58 @@ var database = firebase.database();
 
 $(document).ready(function () {
 
+    // This will display information based on geolocation
+    // Currently is does not pull geolocation
     $("#check-if-safe-now").on("click", function () {
         $(".nowContainer").css("display", "block");
         $(".laterContainer").css("display", "none");
         $(".beginningForm").css("border", "solid grey 4px");
     });
+
+    // Once clicked, this will display the zipcode form and enter button
     $("#check-if-safe-later").on("click", function () {
         $(".nowContainer").css("display", "none");
         $(".zipcodeForm").css("display", "block");
         $("#check-if-safe-later").css("display", "none");
 
     });
-    $("#check-if-safe-zipcode").on("click", function (e) {
-        e.preventDefault();
-        $(".laterContainer").css("display", "block");
-        $(".nowContainer").css("display", "none");
-        var apiKey = "J4QW6QeT5JkCYP4vnCmUTpdF4";
-        var queryURL = "https://data.cityoforlando.net/resource/6qd7-sr7g.json?$$app_token=" + apiKey + "$where=date between '2015-01-10T12:00:00' and '2015-01-10T14:00:00'";
 
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
-        });
+    // First API Call is here
+    // This should be attached to the check-if-safe-now event
+    var apiKey = "J4QW6QeT5JkCYP4vnCmUTpdF4";
+    var queryURL = "https://data.cityoforlando.net/resource/6qd7-sr7g.json?$$app_token=" + apiKey + "$where=date between '2015-01-10T12:00:00' and '2015-01-10T14:00:00'";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
     });
 
-    $(".addComment").on("click", function (e) {
-        e.preventDefault();
-        var comment = $("#newComment").val().trim();
-        database.ref().push({
-            comment: comment
-        });
-        // $(".comment-view").append(comment);
-    });
+    var zipInput = $("#grid-zip").val().trim();
 
-    var zipCode = "";
-
-    // When the check-if-safe button is clicked it adds the zip code to the firebase database
-    $("#check-if-safe").on("click", function (event) {
+    // When the check-if-safe-zipcode button is clicked it adds the zip code to the firebase database
+    $("#check-if-safe-zipcode").on("click", function (event) {
         event.preventDefault();
 
-        zipCode = $("#grid-zip").val().trim();
+            $(".laterContainer").css("display", "block");
+            $(".nowContainer").css("display", "none");
+            $("#zip-here").text(zipInput);
+            database.ref().on("value", function(snapshot) {
+                var s = snapshot.val();
+                console.log(s.zipInput);
 
+            });
+    });
+
+    // When you want to add a comment it will add a comment and display comments for that zipcode.
+    $(".addComment").on("click", function (e) {
+        e.preventDefault();
+    
+        var comment = $("#newComment").val().trim();
         database.ref().push({
-            zipCode: zipCode,
+            zipCode: zipInput,
+            comment: comment,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
     });
@@ -70,20 +77,22 @@ $(document).ready(function () {
         var deleteKey = snapshot.key;
         console.log(snap);
 
-        // This function will display...
-        $(".comment-view").append("<br> <div> SampleUserName: " + snap.comment + "  <button id='" + deleteKey + "' class='delete'>Delete</button></div>");
+        // This function will display the comment for that zip code and a delete button for each comment
+        // currently displays all comments for all zip codes
+        $(".comment-view").append("<br> <div> Comment: " + snap.zipCode + "  <button id='" + deleteKey + "' class='delete'>Delete</button></div>");
 
         // Below throws an error message if something has gone wrong
     }, function (errorObject) {
         console.log("Errors handled: ", + errorObject.code);
     });
 
+    // This function will delete "this" comment
     $(".comment-view").on("click", ".delete", function (e) {
         e.preventDefault();
         var keyToDelete = $(this).attr("id");
         database.ref(keyToDelete).remove()
             .then($(this).closest('div').remove());
-    })
+    });
 
     // Ajax call
 
