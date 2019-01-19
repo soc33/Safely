@@ -31,16 +31,56 @@ $(document).ready(function () {
 
     });
 
-    // First API Call is here
-    // This should be attached to the check-if-safe-now event
-    var apiKey = "J4QW6QeT5JkCYP4vnCmUTpdF4";
-    var queryURL = "https://data.cityoforlando.net/resource/6qd7-sr7g.json?$$app_token=" + apiKey + "$where=date between '2015-01-10T12:00:00' and '2015-01-10T14:00:00'";
+    var x = document.getElementById("zipcode");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "Longitude: " + position.coords.longitude;
+    }
+    $("#check-if-safe-now").on("click", function (e) {
+        e.preventDefault();
+        getLocation();
+        showPosition();
+
+
+    });
+    // https://api.opencagedata.com/geocode/v1/json?q=PLACENAME&key=278527ab562a439fb356e1ca002242fe
+
+
+    // https://api.opencagedata.com/geocode/v1/json?q=LAT+LNG&key=278527ab562a439fb356e1ca002242fe
+
+
+    $("#check-if-safe-zipcode").on("click", function (e) {
+        e.preventDefault();
+        $(".laterContainer").css("display", "block");
+        $(".nowContainer").css("display", "none");
+        // var apiKey = "J4QW6QeT5JkCYP4vnCmUTpdF4";
+        var queryURL = "https://data.cityoforlando.net/resource/6qd7-sr7g.json?$where=case_date_time > '2017-11' and case_date_time < '2019-02' and case_offense_charge_type = 'Committed' and within_circle(location, 28.460357483, -81.458659246, 1000)";
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+
+
+        });
+    });
+
+    $(".addComment").on("click", function (e) {
+        e.preventDefault();
+        var comment = $("#newComment").val().trim();
+        database.ref().push({
+            comment: comment
+        });
+
     });
     $("#check-for-resources").on("click", function (e) {
         e.preventDefault();
@@ -128,6 +168,5 @@ $("#check-if-safe-zipcode").on("Click", function(event){
         console.log(response)
     })
 })
-
 
 });
