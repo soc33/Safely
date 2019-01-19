@@ -25,28 +25,37 @@
 </head>
 
 <body>
-    <!-- title -->
-    <div class="mx-auto w-full px-4 mb-3 bg-transparent header">
+
+
+    <header class="mb-6 h-64 mainHeader">
+ <div class="container mx-auto w-full px-4 mb-3 bg-transparent items-center">
         <h1 class=""><i class="fas fa-child"></i> Safely</h1>
     </div>
+    </header>
+    <!-- title -->
+   
 
     <!-- body-->
-    <div class="flex mb-4 px-4 bg-transparent">
+    <div class="flex mb-6 px-6 bg-transparent">
 
         <!-- control panel -->
-        <div class="lg:w-1/4 bg-transparent px-46 beginningForm sm:w-full ">
+        <div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-blue-lighter hover:border-yellow-dark beginningForm sm:w-full ">
+           
+            <!-- check safe button -->
             <div class="w-full px-3 mb-6 inline-flex">
-                <!-- check safe button -->
-                <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-dark text-white font-bold py-6 px-6 rounded-full"
+                <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-darker text-white font-bold py-6 px-6 rounded-full"
                     id="check-if-safe-now">Check if I'm safe right NOW!</button>
             </div>
+
+            <!-- or -->
             <div class="w-full  px-3 mb-6 mt-6">
 
-                <h1 class="text-5xl text-center">Or</h1> <br><br>
+                <!-- <h1 class="text-5xl text-center">Or</h1> <br><br> -->
             </div>
+
             <!-- check if another place is safe button -->
             <div class="w-full px-3 mb-6 inline-flex">
-                <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-dark text-white font-bold py-6 px-6 rounded-full"
+                <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-darker text-white font-bold py-6 px-6 rounded-full"
                     id="check-if-safe-later">Check if another place is safe!</button>
             </div>
             <div class="w-full  px-3 mb-6 mt-6">
@@ -66,10 +75,17 @@
                             if I will be safe!</button></div><br><br><br><br>
                 </form>
             </div>
+
+            <!-- other resources -->
+            <div class="w-full px-3 mb-6 inline-flex">
+                    <button class=" bg-blue text-center justify-center mx-auto mt-6 hover:bg-blue-darker text-white font-bold py-6 px-6 rounded-full"
+                        id="check-for-resources">Other helpful resouces</button>
+                </div>
+
         </div>
         <!-- now container -->
         <!-- when user hits the red button this container will display with alert level in there current location -->
-        <div class="w-3/4 bg-orange px-46 mx-4 nowContainer">
+        <div class="w-3/4 bg-orange px-46 mx-4 rounded shadow-lg nowContainer">
             <div class="  text-5xl" style="text-decoration: underline;">You are in <span class="zipcode">32826</span>
                 Zip code</div>
             <div role="alert" id="redAlert">
@@ -133,7 +149,7 @@
         <!-- Later container -->
         <!-- this will display the area user looked for and will provide statistical charts  -->
 
-        <div class="w-3/4 bg-pink px-46 mx-4 laterContainer">
+        <div class="w-3/4 bg-pink px-46 mx-4 rounded shadow-lg laterContainer">
             <div class="w-full">
                 <div class="  text-5xl" style="text-decoration: underline;">You looked up <span class="zipcode">32826</span>
                     Zip code
@@ -149,16 +165,54 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
+        
         <div class="card" id="comment-view"></div>
     </div>
+
+<!-- other resource container -->
+<div class="flex h-64 mb-4 resourceContainer">
+    <!-- get help now -->
+    <div class="w-1/4 bg-grey h-34">
+        <img class="" src="./assets/images/help-now.png" alt="help now"> 
+    </div>
+
+    <!-- red cross -->
+    <div class="w-1/4 bg-grey-light h-34">
+        <img class="" src="./assets/images/red-cross.jpeg" alt="red cross" >
+    </div>
+    
+    <div class="w-1/4 bg-grey h-34">
+    <img class="" src="./assets/images/PestControl440.png" alt="pest control">
+    </div>
+    <div class="w-1/4 bg-grey-light h-34"></div>
+  </div>
+
+  <!-- Help phone number-->
+  <div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-blue-lighter">
+    <ol>
+        <li><a href="http://www.cityoforlando.net/police/" target="_blank">Orlando Police</a></li>
+        <li><a href="http://www.cityoforlando.net/fire/" target="_blank">Fire Rescue</a></li>
+        <li><a href="http://www.cityoforlando.net/emergency/" target="_blank">Emergency Management</a></li>
+        <li><a href="http://www.orangecountyanimalservicesfl.net/" target="_blank">Animal control</a></li>
+        <li><a href="http://www.orangecountyfl.net/EmergencySafety/HurricaneGuide.aspx#.XENGPs9Kh24" target="_blank">Hurricane Prepareness</a></li>
+        <li><a href="https://www.orangecountyfl.net/FamiliesHealthSocialSvcs/MentalHealth.aspx#.XENKV89Kh24" target="_blank">Mental Health</a></li>
+    </ol>
+</div>
+
+<!-- red cross guide -->
+<div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-red-lighter">
+    <!-- hiemlich video -->
+            <iframe width="200" height="200" src="https://www.youtube.com/embed/2dn13zneEjo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> Heimlich Meneuver</iframe>
+    <!-- cpr video -->
+    <iframe width="200" height="200" src="https://www.youtube.com/embed/aQXh6J7IVe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- put out a fire -->
+    <iframe width="200" height="200" src="https://www.youtube.com/embed/AFwkGTEles8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+
+
+
 </body>
 
 </html>

@@ -18,7 +18,7 @@ $(document).ready(function () {
     $("#check-if-safe-now").on("click", function () {
         $(".nowContainer").css("display", "block");
         $(".laterContainer").css("display", "none");
-        $(".beginningForm").css("border", "solid grey 4px");
+        // $(".beginningForm").css("border", "solid grey 4px");
     });
     $("#check-if-safe-later").on("click", function () {
         $(".nowContainer").css("display", "none");
@@ -32,6 +32,12 @@ $(document).ready(function () {
         $(".nowContainer").css("display", "none");
 
     });
+    $("#check-for-resources").on("click", function (e) {
+        e.preventDefault();
+        $(".resourceContainer").toggle();
+    })
+
+
 
     var zipCode = "";
 
