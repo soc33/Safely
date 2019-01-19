@@ -59,13 +59,31 @@ $(document).ready(function () {
     });
 
     // Ajax call
-    var apiKey = "";
-    var queryURL = "";
+    var queryURL = "https://data.cityoforlando.net/resource/6qd7-sr7g.json?$where=case_date_time > '2017' and case_offense_charge_type = 'Committed' and case_offense_category = 'Burglary' and within_circle(location , 28.538336, -81.379234, 200 ) ";
+    $("#check-if-safe-now").on("click" , function(event){
+        
+
+    
+    $.ajax({
+        url: queryURL,
+        method: "GET" 
+    }).then(function (response) { 
+        
+       var results = response;
+       console.log(results);
+    
+    });
+});
+
+$("#check-if-safe-zipcode").on("Click", function(event){
+    var queryURL = 'https://api.opencagedata.com/geocode/v1/json?q=PLACENAME&key=278527ab562a439fb356e1ca002242fe'
 
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function (response) {
-        console.log(response);
-    });
+    }).then(function(response){
+        console.log(response)
+    })
+})
+
 });
