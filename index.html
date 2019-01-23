@@ -31,19 +31,19 @@
 
 
     <header class="mb-6 h-64 mainHeader">
- <div class="container mx-auto w-full px-4 mb-3 bg-transparent items-center">
-        <h1 class=""><i class="fas fa-child"></i> Safely</h1>
-    </div>
+        <div class="container mx-auto w-full px-4 mb-3 bg-transparent items-center">
+            <h1 class=""><i class="fas fa-child"></i> Safely</h1>
+        </div>
     </header>
     <!-- title -->
-   
+
 
     <!-- body-->
     <div class="flex mb-6 px-6 bg-transparent">
 
         <!-- control panel -->
         <div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-blue-lighter hover:border-yellow-dark beginningForm sm:w-full ">
-           
+
             <!-- check safe button -->
             <div class="w-full px-3 mb-6 inline-flex">
                 <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-darker text-white font-bold py-6 px-6 rounded-full"
@@ -82,48 +82,51 @@
 
             <!-- other resources -->
             <div class="w-full px-3 mb-6 inline-flex">
-                    <button class=" bg-blue text-center justify-center mx-auto mt-6 hover:bg-blue-darker text-white font-bold py-6 px-6 rounded-full"
-                        id="check-for-resources">Other helpful resouces</button>
-                </div>
+                <button class=" bg-blue text-center justify-center mx-auto mt-6 hover:bg-blue-darker text-white font-bold py-6 px-6 rounded-full"
+                    id="check-for-resources">Other helpful resouces</button>
+            </div>
 
         </div>
         <!-- now container -->
         <!-- when user hits the red button this container will display with alert level in there current location -->
         <div class="w-3/4 bg-orange px-46 mx-4 rounded shadow-lg nowContainer">
-            <div class="  text-5xl" style="text-decoration: underline;">You are in <span class="zipcode">32826</span>
+            <div class="  text-5xl" style="text-decoration: underline;">You are in <span id="zip-here">32826</span>
                 Zip code</div>
-            <div role="alert" id="redAlert">
+            <div role="alert" id="redAlert2">
                 <div class="bg-red text-black font-bold rounded-t px-4 py-2">
                     Danger! Be on High Alert!
                 </div>
                 <div class="border border-t-0 border-red-light rounded-b bg-red-lightest px-4 py-3 text-red-dark">
-                    <p>A recent crime was committed this week!</p>
+                    <p>A lot of dangerous crime is documented in this area!</p>
                 </div>
             </div>
-            <div role="alert" id="yellowAlert">
+            <div role="alert" id="yellowAlert2">
                 <div class="bg-yellow text-black font-bold rounded-t px-4 py-2">
                     Proceed with caution
                 </div>
                 <div class="border border-t-0 border-yellow-light rounded-b bg-yellow-lightest px-4 py-3 text-yellow-darker">
-                    <p>A recent crime was committed this month!</p>
+                    <p>There is some dangerous crime that has been reported in this area!</p>
                 </div>
             </div>
-            <div role="alert" id="greenAlert">
+            <div role="alert" id="greenAlert2">
                 <div class="bg-green text-black font-bold rounded-t px-4 py-2">
                     You're clear :)
                 </div>
                 <div class="border border-t-0 border-green-light rounded-b bg-green-lightest px-4 py-3 text-green-dark">
-                    <p>No recent crimes in this area! <br> <strong>Remember: </strong>Always proceed with caution in
-                        new areas, remember that no recent crime does not guarantee safety
+                    <p>There is no dangerous crime documented in this area <br> <strong>Remember: </strong><em>Always
+                            proceed with caution in
+                            new areas, remember that no documented crime does not guarantee safety</em>
                     </p>
                 </div>
             </div>
             <div role="alert" id="redAlert">
                 <div class="bg-red text-black font-bold rounded-t px-4 py-2">
-                    Danger! Be on high alert!
+                    Be aware of your surroundings!
                 </div>
                 <div class="border border-t-0 border-red-light rounded-b bg-red-lightest px-4 py-3 text-red-dark">
-                    <p>A lot of crime is documented in this area</p>
+                    <p>This area has a lot of theft and lower-degree crimes documented in this area. While they are not
+                        the most dangerous crimes, there is still plenty to mindful of here! Watch your valuables and
+                        pay close attention to your kids and loved ones!</p>
                 </div>
             </div>
             <div role="alert" id="yellowAlert">
@@ -131,18 +134,11 @@
                     Proceed with caution.
                 </div>
                 <div class="border border-t-0 border-yellow-light rounded-b bg-yellow-lightest px-4 py-3 text-yellow-darker">
-                    <p>A high amount of crime has been documented in this area</p>
+                    <p>There has been a high amount of theft and lower-degree crimes documented in this area, please be
+                        mindful of your things and loved ones!.</p>
                 </div>
             </div>
-            <div role="alert" id="greenAlert">
-                <div class="bg-green text-black font-bold rounded-t px-4 py-2">
-                    Success! You found a good area!
-                </div>
-                <div class="border border-t-0 border-green-light rounded-b bg-green-lightest px-4 py-3 text-green-dark">
-                    <p>There has been a minimal amount of crime documented in this area.</p>
-                </div>
-            </div>
-            <div class="">Last crime was: <span class="last-crime-view"></span> </div>
+
             <div class="">Last Comment was: <span class="last-comment-view"></span></div>
 
             <div class=""></div>
@@ -155,10 +151,12 @@
 
         <div class="w-3/4 bg-pink px-46 mx-4 rounded shadow-lg laterContainer">
             <div class="w-full">
-                <div class="  text-5xl" style="text-decoration: underline;">You looked up <span class="zipcode" id="zip-here"></span>
+                <div class="  text-5xl" style="text-decoration: underline;">You looked up <span class="zipcode" id="zip-here2"></span>
                     Zip code
                 </div>
-                <div class="graph bg-white">graph info</div>
+                <div class="graph bg-white">
+                    
+                </div>
             </div>
             <div class="flex">
                 <div class="w-2/3 bg-purple">
@@ -181,49 +179,46 @@
         </div>
     </div>
 
-        
-        <div class="card" id="comment-view"></div>
+
+    <div class="card" id="comment-view"></div>
     </div>
 
-<!-- other resource container -->
-<div class="flex h-64 mb-4 resourceContainer">
-    <!-- get help now -->
-    <div class="w-1/4 bg-grey h-34">
-        <img class="" src="./assets/images/help-now.png" alt="help now"> 
+    <!-- other resource container -->
+    <div class="flex h-64 mb-4 resourceContainer">
+        <!-- get help now -->
+        <div class="w-1/4 bg-grey h-34">
+            <img class="" src="./assets/images/help-now.png" alt="help now">
+        </div>
+
+        <!-- red cross -->
+        <div class="w-1/4 bg-grey-light h-34">
+            <img class="" src="./assets/images/red-cross.jpeg" alt="red cross">
+        </div>
+
+        <div class="w-1/4 bg-grey h-34">
+            <img class="" src="./assets/images/PestControl440.png" alt="pest control">
+        </div>
+        <div class="w-1/4 bg-grey-light h-34"></div>
     </div>
 
-    <!-- red cross -->
-    <div class="w-1/4 bg-grey-light h-34">
-        <img class="" src="./assets/images/red-cross.jpeg" alt="red cross" >
+    <!-- Help phone number-->
+    <div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-blue-lighter">
+        <ol>
+            <li><a href="http://www.cityoforlando.net/police/" target="_blank">Orlando Police</a></li>
+            <li><a href="http://www.cityoforlando.net/fire/" target="_blank">Fire Rescue</a></li>
+            <li><a href="http://www.cityoforlando.net/emergency/" target="_blank">Emergency Management</a></li>
+            <li><a href="http://www.orangecountyanimalservicesfl.net/" target="_blank">Animal control</a></li>
+            <li><a href="http://www.orangecountyfl.net/EmergencySafety/HurricaneGuide.aspx#.XENGPs9Kh24" target="_blank">Hurricane
+                    Prepareness</a></li>
+            <li><a href="https://www.orangecountyfl.net/FamiliesHealthSocialSvcs/MentalHealth.aspx#.XENKV89Kh24" target="_blank">Mental
+                    Health</a></li>
+        </ol>
     </div>
-    
-    <div class="w-1/4 bg-grey h-34">
-    <img class="" src="./assets/images/PestControl440.png" alt="pest control">
+
+    <!-- red cross guide -->
+    <div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-red-lighter">
+
     </div>
-    <div class="w-1/4 bg-grey-light h-34"></div>
-  </div>
-
-  <!-- Help phone number-->
-  <div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-blue-lighter">
-    <ol>
-        <li><a href="http://www.cityoforlando.net/police/" target="_blank">Orlando Police</a></li>
-        <li><a href="http://www.cityoforlando.net/fire/" target="_blank">Fire Rescue</a></li>
-        <li><a href="http://www.cityoforlando.net/emergency/" target="_blank">Emergency Management</a></li>
-        <li><a href="http://www.orangecountyanimalservicesfl.net/" target="_blank">Animal control</a></li>
-        <li><a href="http://www.orangecountyfl.net/EmergencySafety/HurricaneGuide.aspx#.XENGPs9Kh24" target="_blank">Hurricane Prepareness</a></li>
-        <li><a href="https://www.orangecountyfl.net/FamiliesHealthSocialSvcs/MentalHealth.aspx#.XENKV89Kh24" target="_blank">Mental Health</a></li>
-    </ol>
-</div>
-
-<!-- red cross guide -->
-<div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-red-lighter">
-    <!-- hiemlich video -->
-            <iframe width="200" height="200" src="https://www.youtube.com/embed/2dn13zneEjo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> Heimlich Meneuver</iframe>
-    <!-- cpr video -->
-    <iframe width="200" height="200" src="https://www.youtube.com/embed/aQXh6J7IVe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <!-- put out a fire -->
-    <iframe width="200" height="200" src="https://www.youtube.com/embed/AFwkGTEles8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
 
 
 
