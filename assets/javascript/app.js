@@ -198,4 +198,9 @@ $(document).ready(function () {
         $(".resourceContainer").toggle();
     });
 
+    $(".slider_clock").EasySlides({
+        "stepbystep": false,
+        "show": 15
+    });
+
 });
