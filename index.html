@@ -22,25 +22,59 @@
     <!-- linking font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
         crossorigin="anonymous">
+
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title: {
+                    text: "Desktop Browser Market Share in 2016"
+                },
+                data: [{
+                    type: "column",
+                    startAngle: 25,
+                    toolTipContent: "<b>{label}</b>: {y}%",
+                    showInLegend: "true",
+                    legendText: "{label}",
+                    indexLabelFontSize: 16,
+                    indexLabel: "{label} - {y}%",
+                    dataPoints: [
+                        { y: 154, label: "Chrome" },
+                        { y: 593, label: "Internet Explorer" },
+                        { y: 10.62, label: "Firefox" },
+                        { y: 5.02, label: "Microsoft Edge" },
+                        { y: 4.07, label: "Safari" },
+                        { y: 1.22, label: "Opera" },
+                        { y: 0.44, label: "Others" }
+                    ]
+                }]
+            });
+            chart.render();
+
+        }
+    </script>
 </head>
 
 <body>
 
 
     <header class="mb-6 h-64 mainHeader">
- <div class="container mx-auto w-full px-4 mb-3 bg-transparent items-center">
-        <h1 class=""><i class="fas fa-child"></i> Safely</h1>
-    </div>
+        <div class="container mx-auto w-full px-4 mb-3 bg-transparent items-center">
+            <h1 class=""><i class="fas fa-child"></i> Safely</h1>
+        </div>
     </header>
     <!-- title -->
-   
+
 
     <!-- body-->
     <div class="flex mb-6 px-6 bg-transparent">
 
         <!-- control panel -->
         <div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-blue-lighter hover:border-yellow-dark beginningForm sm:w-full ">
-           
+
             <!-- check safe button -->
             <div class="w-full px-3 mb-6 inline-flex">
                 <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-darker text-white font-bold py-6 px-6 rounded-full"
@@ -78,9 +112,9 @@
 
             <!-- other resources -->
             <div class="w-full px-3 mb-6 inline-flex">
-                    <button class=" bg-blue text-center justify-center mx-auto mt-6 hover:bg-blue-darker text-white font-bold py-6 px-6 rounded-full"
-                        id="check-for-resources">Other helpful resouces</button>
-                </div>
+                <button class=" bg-blue text-center justify-center mx-auto mt-6 hover:bg-blue-darker text-white font-bold py-6 px-6 rounded-full"
+                    id="check-for-resources">Other helpful resouces</button>
+            </div>
 
         </div>
         <!-- now container -->
@@ -154,7 +188,10 @@
                 <div class="  text-5xl" style="text-decoration: underline;">You looked up <span class="zipcode">32826</span>
                     Zip code
                 </div>
-                <div class="graph bg-white">graph info</div>
+                <div class="graph bg-white">graph info
+                    <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+
+                </div>
             </div>
             <div class="flex">
                 <div class="w-2/3 bg-purple">
@@ -165,53 +202,100 @@
             </div>
         </div>
 
-        
+
         <div class="card" id="comment-view"></div>
     </div>
 
-<!-- other resource container -->
-<div class="flex h-64 mb-4 resourceContainer">
-    <!-- get help now -->
-    <div class="w-1/4 bg-grey h-34">
-        <img class="" src="./assets/images/help-now.png" alt="help now"> 
+   <!-- other resource container -->
+   <div class="resourceContainer" >
+    <div class="slider slider_clock" >
+        <!-- slide 0 -Heimlich Manuever -->
+        <div class="slide1" id="s0">
+            <h4>Heimlich Manuever</h4>
+            <a href="" ></a>                
+            <img class="" src="./assets/images/Heimlich.jpg" alt="Police info" width="150px" height="100px">
+            <p></p>
+        </div>
+
+        <!-- slide 1 CPR -->
+        <div class="slide1" id="s1">
+                <h4>CPR</h4>
+                <a href="" ></a>  
+                <img class=""  src="./assets/images/cpr.jpg" alt="Police info" width="150px" height="200px"></a>
+            </div>
+
+
+
+        <!-- slide 2 police -->
+        <div class="slide1" id="s2">
+            <h4>Police</h4>
+            <a href="" ></a>  
+            <img class=""  src="./assets/images/policeIcon.jpeg" alt="Police info" width="200px" height="200px"></a>
+            <p>(888)-777-6666</p>
+        </div>
+
+        <!-- slide 3 fire rescue -->
+        <div class="slide1" id="s3">
+            <h4>Fire Rescue</h4>
+            <a href="" ></a>  
+            <img class="" src="./assets/images/fireRescue.jpg" alt="Fire Department" width="200px" height="200px"></a>
+        </div>
+
+        <!-- slide 4 red cross -->
+        <div class="slide1" id="s4">
+            <h4>red cross</h4>
+            <a href="" ></a>  
+            <img class="" src="./assets/images/red-cross.png" alt="Red Cross" width="200px" height="200px"></a>
+        </div>
+        <!-- slide 5 Emergency Management -->
+        <div class="slide1" id="s5">
+            <h4>Emergency Management</h4>
+            <a href="" ></a>  
+            <img class="" src="./assets/images/emergency-management.jpg" alt="Emergency Management" width="200px"
+                height="200px"></a>
+        </div>
+
+        <!-- slide 6 animal control -->
+        <div class="slide1" id="s6">
+            <h4>Animal Control</h4>
+            <a href="" ></a>  
+            <img class="" src="./assets/images/animalControl.png" alt="Animal control" width="200px" height="200px"></a>
+
+        </div>
+        <!-- slide 7 hurrican preparedness -->
+        <div class="slide1" id="s7">
+            <h4>Hurricane preparedness</h4>
+            <a href="" ></a>  
+            <img class="" src="./assets/images/hurricane-icon.jpg" alt="Hurricane preparedness" width="200px"
+                height="200px"></a>
+        </div>
+
+        <!-- slide 8 mental health issues -->
+        <div class="slide1" id="s8">
+            <h4>Mental Health</h4>
+            <a href="" ></a>  
+            <img class="" src="./assets/images/mental-health.png" alt="Mental Health Services" width="200px" height="200px"></a>
+
+        </div>
+
+        <!-- slide 9 suicide prevention -->
+        <div class="slide1" id="s9"> 
+            <h4>Suicide Prevention</h4>
+            <a href="" ></a>  
+            <img class="" src="./assets/images/suicideIcon.png" alt="Suicide Helpline" width="200px" height="200px"></a>
+
+        </div>
+
+
+        <div class="next_button"></div>
+        <div class="prev_button"></div>
     </div>
 
-    <!-- red cross -->
-    <div class="w-1/4 bg-grey-light h-34">
-        <img class="" src="./assets/images/red-cross.jpeg" alt="red cross" >
-    </div>
-    
-    <div class="w-1/4 bg-grey h-34">
-    <img class="" src="./assets/images/PestControl440.png" alt="pest control">
-    </div>
-    <div class="w-1/4 bg-grey-light h-34"></div>
-  </div>
-
-  <!-- Help phone number-->
-  <div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-blue-lighter">
-    <ol>
-        <li><a href="http://www.cityoforlando.net/police/" target="_blank">Orlando Police</a></li>
-        <li><a href="http://www.cityoforlando.net/fire/" target="_blank">Fire Rescue</a></li>
-        <li><a href="http://www.cityoforlando.net/emergency/" target="_blank">Emergency Management</a></li>
-        <li><a href="http://www.orangecountyanimalservicesfl.net/" target="_blank">Animal control</a></li>
-        <li><a href="http://www.orangecountyfl.net/EmergencySafety/HurricaneGuide.aspx#.XENGPs9Kh24" target="_blank">Hurricane Prepareness</a></li>
-        <li><a href="https://www.orangecountyfl.net/FamiliesHealthSocialSvcs/MentalHealth.aspx#.XENKV89Kh24" target="_blank">Mental Health</a></li>
-    </ol>
 </div>
 
-<!-- red cross guide -->
-<div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-red-lighter">
-    <!-- hiemlich video -->
-            <iframe width="200" height="200" src="https://www.youtube.com/embed/2dn13zneEjo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> Heimlich Meneuver</iframe>
-    <!-- cpr video -->
-    <iframe width="200" height="200" src="https://www.youtube.com/embed/aQXh6J7IVe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <!-- put out a fire -->
-    <iframe width="200" height="200" src="https://www.youtube.com/embed/AFwkGTEles8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
 
 
-
-
+    <script src="./assets/javascript/canvasjs.min.js"></script>
 
 </body>
 
