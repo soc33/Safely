@@ -24,7 +24,7 @@ Shabanov Ivan (2017)
 
             var count = $(this_slider).children('*:not(.next_button, .prev_button, .nav_indicators)').length;
             var cur_slide = 0;
-            var mousedowned = false;
+            // var mousedowned = false;
             var need_slide = 0;
             var slides;
             if (count > 0) {
@@ -233,50 +233,60 @@ var clicked1 = false;
 $(document).on("click", ".slide1", ".current", function () {
 
 
-    
+
     var x = $(this).attr("id");
     console.log(x);
     var carLinks = ["https://www.webmd.com/first-aid/choking-treatment#1-4", "https://www.webmd.com/first-aid/cardiopulmonary-resuscitation-cpr-treatment", "http://www.cityoforlando.net/police/", "http://www.cityoforlando.net/fire/", "https://www.redcross.org/", "http://www.cityoforlando.net/emergency/", "http://www.orangecountyanimalservicesfl.net/", "http://www.orangecountyfl.net/EmergencySafety/HurricaneGuide.aspx#.XENGPs9Kh24", "https://www.orangecountyfl.net/FamiliesHealthSocialSvcs/MentalHealth.aspx#.XENKV89Kh24", "https://suicidepreventionlifeline.org/"];
 
     switch (x) {
         case "s0":
-            $(this).append("<a href='" + carLinks[0] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[0] + "' target='_blank'>Click here for more information</a>");
 
             break;
         case "s1":
-            $(this).append("<a href='" + carLinks[1] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[1] + "' target='_blank'>Click here for more information</a>");
 
             break;
         case "s2":
-            $(this).append("<a href='" + carLinks[2] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[2] + "' target='_blank'>Click here for more information</a>");
 
             break;
         case "s3":
-            $(this).append("<a href='" + carLinks[3] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[3] + "' target='_blank'>Click here for more information</a>");
 
             break;
         case "s4":
-            $(this).append("<a href='" + carLinks[4] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[4] + "' target='_blank'>Click here for more information</a>");
 
             break;
         case "s5":
-            $(this).append("<a href='" + carLinks[5] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[5] + "' target='_blank'>Click here for more information</a>");
 
             break;
         case "s6":
-            $(this).append("<a href='" + carLinks[6] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[6] + "' target='_blank'>Click here for more information</a>");
 
             break;
         case "s7":
-            $(this).append("<a href='" + carLinks[7] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[7] + "' target='_blank'>Click here for more information</a>");
 
             break;
         case "s8":
-            $(this).append("<a href='" + carLinks[8] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[8] + "' target='_blank'>Click here for more information</a>");
 
             break;
         case "s9":
-            $(this).append("<a href='" + carLinks[9] + "'>Click Here </a>");
+            $(this).find('p').empty();
+            $(this).find('p').append("<a href='" + carLinks[9] + "' target='_blank'>Click here for more information</a>");
 
             break;
     }

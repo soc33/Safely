@@ -61,7 +61,19 @@ h1 {
 {
     display: none;
 }
- 
+
+#greenAlert2, #redAlert2, #redAlert, #yellowAlert, #yellowAlert2 {
+    display: none;
+}
+
+#map-view, #map-view2 {
+    /* display: block; */
+    position: relative;
+    /* width: 600px; */
+    height: 300px;
+    /* border-style: dotted; */
+    /* border-color: black;  */
+ }
 
 /* clock slider*/
 
@@ -276,5 +288,12 @@ clip-path: polygon(100% 100%, 100% 29%, 72% 5%, 16% 6%, 0 24%, 0 100%);
     }
     h1 {
         font-size: 4.5em;
+    }
+    .bodyContainer {
+        flex-wrap: wrap;
+    }
+    .nowContainer, .laterContainer {
+        order: -1;
+        width: 100%;
     }
 }
