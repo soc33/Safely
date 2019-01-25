@@ -303,6 +303,7 @@ $(document).ready(function () {
             comment: comment,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
+        $("#newComment").val("");
 
     });
 
