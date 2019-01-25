@@ -11,6 +11,77 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 var queryURL = "";
+var zipInput;
+var zipcode;
+var zipcodeMurderStats = 0;
+var zipcodeKidnappingStats = 0;
+var zipcodeBurglaryStats = 0;
+var zipcodeTheftStats = 0;
+var zipcodeAssaultStats = 0;
+var zipcodeArsonStats = 0;
+var zipcodeFraudStats = 0;
+var zipcodeDrugStats = 0;
+var zipcodeOtherStats = 0;
+
+
+makeChart = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        exportEnabled: true,
+        animationEnabled: true,
+        title: {
+            text: "Arrests documented in this area for a year"
+        },
+        data: [{
+            type: "column",
+            startAngle: 25,
+            toolTipContent: "<b>{label}</b>: {y}",
+            showInLegend: "true",
+            legendText: "{label}",
+            indexLabelFontSize: 16,
+            indexLabel: "{label}",
+            dataPoints: [
+                { y: zipcodeMurderStats, label: "Murder" },
+                { y: zipcodeKidnappingStats, label: "Kidnapping" },
+                { y: zipcodeBurglaryStats, label: "Burglary" },
+                { y: zipcodeTheftStats, label: "Theft" },
+                { y: zipcodeAssaultStats, label: "Assault" },
+                { y: zipcodeArsonStats, label: "Arson" },
+                { y: zipcodeFraudStats, label: "Fraud" },
+                { y: zipcodeOtherStats, label: "Other Crime" }
+            ]
+        }]
+    });
+    chart.render();
+
+}
+function mapNow(latitude, longitude) {
+    var map = L.map('map-view').setView([28.5383, -81.3792], 10);
+
+    var layer =
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    L.marker([latitude, longitude]).addTo(map)
+        .bindPopup("Latitude : " + latitude + "Longitude : " + longitude)
+        .openPopup();
+
+};
+function mapLater(latitude, longitude) {
+    console.log("Hello");
+    var map = L.map('map-view2').setView([28.5383, -81.3792], 10);
+
+    var layer =
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    L.marker([latitude, longitude]).addTo(map)
+        .bindPopup("Latitude : " + latitude + "Longitude : " + longitude)
+        .openPopup();
+
+};
+
 
 $(document).ready(function () {
 
@@ -36,14 +107,17 @@ $(document).ready(function () {
                 $("#redAlert").show();
                 $("#yellowAlert").hide();
                 $("#greenAlert2").hide();
+                $(".nowContainer").css("background-color", "rgb(253, 114, 114)");
             } else if (response2.length > 30) {
                 $("#yellowAlert").show();
                 $("#redAlert").hide();
                 $("#greenAlert2").hide();
+                $(".nowContainer").css("background-color", "rgb(255,255,153)");
             } else {
                 $("#greenAlert2").show();
                 $("#yellowAlert").hide();
                 $("#redAlert").hide();
+                $(".nowContainer").css("background-color", "rgb(167, 253, 150)");
             }
         });
     }
@@ -52,6 +126,7 @@ $(document).ready(function () {
     function usePosition(position) {
         var userLat = position.coords.latitude;
         var userLong = position.coords.longitude;
+        mapNow(userLat, userLong);
 
 
         queryURL = "https://data.cityoforlando.net/resource/6qd7-sr7g.json?$where=case_date_time > '2016-12' and case_date_time < '2017-01' and case_offense_charge_type = 'Committed' and within_circle(location, " + userLat + ", " + userLong + ", 1000)";
@@ -68,12 +143,14 @@ $(document).ready(function () {
                 $("#greenAlert2").hide();
                 $("#redAlert").hide();
                 $("#yellowAlert").hide();
+                $(".nowContainer").css("background-color", "rbg(253, 114, 114)");
             } else if (response.length > 0) {
                 $("#yellowAlert2").show();
                 $("#redAlert2").hide();
                 $("#greenAlert2").hide();
                 $("#redAlert").hide();
                 $("#yellowAlert").hide();
+                $(".nowContainer").css("background-color", "rgb(255,255,153)");
             } else {
                 $("#yellowAlert2").hide();
                 $("#redAlert2").hide();
@@ -89,10 +166,10 @@ $(document).ready(function () {
             method: "GET"
 
         }).then(function (response) {
-            var zipcode = response.results[0].components.postcode;
+            zipcode = response.results[0].components.postcode;
             console.log(response);
             console.log(zipcode);
-            $("#zip-here").text(zipcode);
+            $("#zip-here").text("You are in " + zipcode + " Zipcode");
 
         });
 
@@ -102,9 +179,10 @@ $(document).ready(function () {
     $("#check-if-safe-now").on("click", function (e) {
         e.preventDefault();
         getLocation();
+        $(".beginningForm").addClass("lg:w-1/4 md:w-1/6");
         $(".nowContainer").css("display", "block");
         $(".laterContainer").css("display", "none");
-        $(".beginningForm").css("border", "solid grey 4px");
+        // $(".beginningForm").css("border", "solid grey 4px");
     });
 
     // Once clicked, this will display the zipcode form and enter button
@@ -117,8 +195,18 @@ $(document).ready(function () {
 
     // When the check-if-safe-zipcode button is clicked it adds the zip code to the firebase database
     $("#check-if-safe-zipcode").on("click", function (event) {
+        $(".beginningForm").addClass("lg:w-1/4 md:w-1/6");
+        zipcodeArsonStats = 0;
+        zipcodeAssaultStats = 0;
+        zipcodeBurglaryStats = 0;
+        zipcodeFraudStats = 0;
+        zipcodeKidnappingStats = 0;
+        zipcodeMurderStats = 0;
+        zipcodeTheftStats = 0;
+        zipcodeDrugStats = 0;
+        zipcodeOtherStats = 0;
         event.preventDefault();
-        var zipInput = $("#grid-zip").val().trim();
+        zipInput = $("#grid-zip").val().trim();
         $("#zip-here2").text(zipInput);
         $(".comment-view").empty();
         // Firebase event listener .on(child_added)
@@ -127,18 +215,19 @@ $(document).ready(function () {
             var deleteKey = snapshot.key;
             console.log(snap);
             if (snap.zipCode == zipInput) {
-                console.log("if");
                 // This will display each comment for the zip code input by the user and generate a delete button for each comment
-                $(".comment-view").append("<br> <div> Comment: " + snap.comment + "  <button id='" + deleteKey + "' class='rounded-full bg-blue delete'>Delete</button></div>");
-            } else {
-                console.log("else");
+                $(".comment-view").append("<br> <div class='border-2 w-full p-6'> Comment: " + snap.comment + "  <button id='" + deleteKey + "' class='rounded-full bg-grey delete'> Delete </button></div>");
             }
             // Below throws an error message if something has gone wrong
         }, function (errorObject) {
             console.log("Errors handled: ", + errorObject.code);
         });
 
-        var queryURL3 = 'https://api.opencagedata.com/geocode/v1/json?q=' + zipInput + '&key=278527ab562a439fb356e1ca002242fe&pretty=1&limit=1&countrycode=us';
+        // displaying the correct container
+        $(".laterContainer").css("display", "block");
+        $(".nowContainer").css("display", "none");
+
+        var queryURL3 = 'https://api.opencagedata.com/geocode/v1/json?q=' + zipInput + '&key=278527ab562a439fb356e1ca002242fe&pretty=1&limit=1&countrycode=us&state_code=FL';
 
         $.ajax({
             url: queryURL3,
@@ -149,25 +238,57 @@ $(document).ready(function () {
             var long = response3.results[0].geometry.lng;
             console.log(lat)
             console.log(long)
-
-
-            // displaying the correct container
-            $(".laterContainer").css("display", "block");
-            $(".nowContainer").css("display", "none");
+            // mapLater(lat, long);
 
 
             // making the call to the crime data API to determine statistics of the area
-            var queryURL2 = "https://data.cityoforlando.net/resource/6qd7-sr7g.json?$where=case_date_time > '2017-01' and case_date_time < '2018-01' and case_offense_charge_type = 'Committed' and within_circle(location, " + lat + "," + long + ", 7000)";
+            var queryURL2 = "https://data.cityoforlando.net/resource/6qd7-sr7g.json?$where=case_date_time > '2017-01' and case_date_time < '2018-01' and within_circle(location, " + lat + "," + long + ", 1000)&$limit=3000";
 
             $.ajax({
                 url: queryURL2,
                 method: "GET"
             }).then(function (response4) {
                 console.log(response4);
+                var results = response4;
+                for (i = 0; i < results.length; i++) {
+                    var category = results[i].case_offense_category;
+                    switch (category) {
+                        case "Homicide":
+                            zipcodeMurderStats++;
+                            console.log(zipcodeMurderStats);
+                            break;
+                        case "Arson":
+                            zipcodeArsonStats++;
+                            break;
+                        case "Assault":
+                            zipcodeAssaultStats++;
+                            break;
+                        case "Burglary":
+                            zipcodeBurglaryStats++;
+                            break;
+                        case "Kidnapping":
+                            zipcodeKidnappingStats++;
+                            break;
+                        case "Fraud":
+                            zipcodeFraudStats++;
+                            break;
+                        case "Theft":
+                            zipcodeTheftStats++;
+                            break;
+                        case "Narcotics":
+                            zipcodeDrugStats++;
+                            break;
+                        default:
+                            zipcodeOtherStats++;
+                            break;
+                    }
+                }
+                makeChart();
 
             });
+            mapLater(lat, long);
+
         });
-        //then hopefully populating a graph with the response information
 
     });
 

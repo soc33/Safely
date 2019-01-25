@@ -47,7 +47,19 @@ clip-path: polygon(50% 0%, 100% 0, 100% 76%, 35% 100%, 0 73%, 0 0);
 {
     display: none;
 }
- 
+
+#greenAlert2, #redAlert2, #redAlert, #yellowAlert, #yellowAlert2 {
+    display: none;
+}
+
+#map-view, #map-view2 {
+    /* display: block; */
+    position: relative;
+    /* width: 600px; */
+    height: 300px;
+    /* border-style: dotted; */
+    /* border-color: black;  */
+ }
 
 /* clock slider*/
 
@@ -244,5 +256,12 @@ div.slider > div:not(.nav_indicators):not(.next_button):not(.prev_button) {
     }
     h1 {
         font-size: 4.5em;
+    }
+    .bodyContainer {
+        flex-wrap: wrap;
+    }
+    .nowContainer, .laterContainer {
+        order: -1;
+        width: 100%;
     }
 }
