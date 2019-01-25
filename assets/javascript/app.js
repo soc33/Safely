@@ -180,6 +180,7 @@ $(document).ready(function () {
         e.preventDefault();
         getLocation();
         $(".beginningForm").addClass("lg:w-1/4 md:w-1/6");
+        $("#check-if-safe-now").css("display", "none");
         $(".nowContainer").css("display", "block");
         $(".laterContainer").css("display", "none");
         // $(".beginningForm").css("border", "solid grey 4px");
