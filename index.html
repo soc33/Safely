@@ -72,242 +72,281 @@
     </header>
     <!-- title -->
 
+    <div id="page-container">
+        <!-- body-->
+        <div class="flex mb-6 px-6 bg-transparent">
 
-    <!-- body-->
-    <div class="flex mb-6 px-6 bg-transparent">
+            <!-- control panel -->
+            <div class="lg:w-1/4 bg-transparent px-46 rounded-lg border-4 border-blue-lighter hover:border-yellow-dark beginningForm sm:w-full bg-blue-lightest "
+                id="controlPanel">
 
-        <!-- control panel -->
-        <div class="lg:w-1/4 bg-transparent px-46 rounded shadow-lg border-4 border-blue-lighter hover:border-yellow-dark beginningForm sm:w-full ">
+                <!-- check safe button -->
+                <div class="w-full px-3 mb-6 inline-flex">
+                    <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-darker text-white font-bold py-6 px-6 rounded-lg"
+                        id="check-if-safe-now">Check if I'm safe right NOW!</button>
+                </div>
 
-            <!-- check safe button -->
-            <div class="w-full px-3 mb-6 inline-flex">
-                <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-darker text-white font-bold py-6 px-6 rounded-full"
-                    id="check-if-safe-now">Check if I'm safe right NOW!</button>
+                <!-- or -->
+                <div class="w-full  px-3 mb-6 mt-6">
+
+                    <!-- <h1 class="text-5xl text-center">Or</h1> <br><br> -->
+                </div>
+
+                <!-- check if another place is safe button, once clicked this will display the zipcode input form -->
+
+                <div class="w-full px-3 mb-6 inline-flex">
+                    <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-darker text-white font-bold py-6 px-6 rounded-lg"
+                        id="check-if-safe-later">Check if another place is safe!</button>
+                </div>
+                <div class="w-full  px-3 mb-6 mt-6">
+
+                    <form class="w-full max-w-md justify-center zipcodeForm">
+
+                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
+                            Zip
+                        </label>
+                        <hr />
+                        <!-- user input zipcode -->
+                        <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                            id="grid-zip" type="text" placeholder="90210">
+                        <div class="w-full px-3 mb-6  inline-flex">
+                            <button class="bg-blue mx-auto justify-center mt-6 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full"
+                                id="check-if-safe-zipcode">Check
+                                if I will be safe!</button></div><br><br><br><br>
+                    </form>
+                </div>
+
+                <!-- other resources -->
+                <div class="w-full px-3 mb-6 inline-flex">
+                    <button class=" bg-blue text-center justify-center mx-auto mt-6 hover:bg-blue-darker text-white font-bold py-6 px-6 rounded-lg"
+                        id="check-for-resources">Other helpful resouces</button>
+                </div>
+
             </div>
-
-            <!-- or -->
-            <div class="w-full  px-3 mb-6 mt-6">
-
-                <!-- <h1 class="text-5xl text-center">Or</h1> <br><br> -->
-            </div>
-
-            <!-- check if another place is safe button, once clicked this will display the zipcode input form -->
-
-            <div class="w-full px-3 mb-6 inline-flex">
-                <button class=" bg-red text-center justify-center mx-auto mt-6 hover:bg-red-darker text-white font-bold py-6 px-6 rounded-full"
-                    id="check-if-safe-later">Check if another place is safe!</button>
-            </div>
-            <div class="w-full  px-3 mb-6 mt-6">
-
-                <form class="w-full max-w-md justify-center zipcodeForm">
-
-                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
-                        Zip
-                    </label>
-                    <hr />
-                    <!-- user input zipcode -->
-                    <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                        id="grid-zip" type="text" placeholder="90210">
-                    <div class="w-full px-3 mb-6  inline-flex">
-                        <button class="bg-blue mx-auto justify-center mt-6 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full"
-                            id="check-if-safe-zipcode">Check
-                            if I will be safe!</button></div><br><br><br><br>
-                </form>
-            </div>
-
-            <!-- other resources -->
-            <div class="w-full px-3 mb-6 inline-flex">
-                <button class=" bg-blue text-center justify-center mx-auto mt-6 hover:bg-blue-darker text-white font-bold py-6 px-6 rounded-full"
-                    id="check-for-resources">Other helpful resouces</button>
-            </div>
-
-        </div>
-        <!-- now container -->
-        <!-- when user hits the red button this container will display with alert level in there current location -->
-        <div class="w-3/4 bg-orange px-46 mx-4 rounded shadow-lg nowContainer">
-            <div class="  text-5xl" style="text-decoration: underline;">You are in <span id="zip-here">32826</span>
-                Zip code</div>
-            <div role="alert" id="redAlert2">
-                <div class="bg-red text-black font-bold rounded-t px-4 py-2">
-                    Danger! Be on High Alert!
-                </div>
-                <div class="border border-t-0 border-red-light rounded-b bg-red-lightest px-4 py-3 text-red-dark">
-                    <p>A lot of dangerous crime is documented in this area!</p>
-                </div>
-            </div>
-            <div role="alert" id="yellowAlert2">
-                <div class="bg-yellow text-black font-bold rounded-t px-4 py-2">
-                    Proceed with caution
-                </div>
-                <div class="border border-t-0 border-yellow-light rounded-b bg-yellow-lightest px-4 py-3 text-yellow-darker">
-                    <p>There is some dangerous crime that has been reported in this area!</p>
-                </div>
-            </div>
-            <div role="alert" id="greenAlert2">
-                <div class="bg-green text-black font-bold rounded-t px-4 py-2">
-                    You're clear :)
-                </div>
-                <div class="border border-t-0 border-green-light rounded-b bg-green-lightest px-4 py-3 text-green-dark">
-                    <p>There is no dangerous crime documented in this area <br> <strong>Remember: </strong><em>Always
-                            proceed with caution in
-                            new areas, remember that no documented crime does not guarantee safety</em>
-                    </p>
-                </div>
-            </div>
-            <div role="alert" id="redAlert">
-                <div class="bg-red text-black font-bold rounded-t px-4 py-2">
-                    Be aware of your surroundings!
-                </div>
-                <div class="border border-t-0 border-red-light rounded-b bg-red-lightest px-4 py-3 text-red-dark">
-                    <p>This area has a lot of theft and lower-degree crimes documented in this area. While they are not
-                        the most dangerous crimes, there is still plenty to mindful of here! Watch your valuables and
-                        pay close attention to your kids and loved ones!</p>
-                </div>
-            </div>
-            <div role="alert" id="yellowAlert">
-                <div class="bg-yellow text-black font-bold rounded-t px-4 py-2">
-                    Proceed with caution.
-                </div>
-                <div class="border border-t-0 border-yellow-light rounded-b bg-yellow-lightest px-4 py-3 text-yellow-darker">
-                    <p>There has been a high amount of theft and lower-degree crimes documented in this area, please be
-                        mindful of your things and loved ones!.</p>
-                </div>
-            </div>
-
-            <div class="">Last Comment was: <span class="last-comment-view"></span></div>
-
-            <div class=""></div>
-
-        </div>
-        <!-- end of now container -->
-
-        <!-- Later container -->
-        <!-- this will display the area user looked for and will provide statistical charts  -->
-
-        <div class="w-3/4 bg-pink px-46 mx-4 rounded shadow-lg laterContainer">
-            <div class="w-full">
-                <div class="  text-5xl" style="text-decoration: underline;">You looked up <span class="zipcode" id="zip-here2"></span>
-                    Zip code
-                </div>
-
-                <div class="graph bg-white">graph info
-                    <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-
-
-                </div>
-            </div>
-            <div class="flex">
-                <div class="w-2/3 bg-purple">
-                    <div class="map">
-                        <div id='map'></div>
+            <!-- now container -->
+            <!-- when user hits the red button this container will display with alert level in there current location -->
+            <div class="w-3/4 bg-orange px-46 mx-4 rounded shadow-lg nowContainer">
+                <div class="  text-5xl" style="text-decoration: underline;">You are in <span id="zip-here">32826</span>
+                    Zip code</div>
+                <div role="alert" id="redAlert2">
+                    <div class="bg-red text-black font-bold rounded-t px-4 py-2">
+                        Danger! Be on High Alert!
                     </div>
-                    <div id="inline-flex">
-                        <form>
-                            <label for="newComment">Add a comment about the area:</label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                id="newComment" type="text" placeholder="I visited here and I felt it was...">
-                        </form>
-                        <button class="addComment bg-blue content-end mt-6 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">Add</button><br>
-                        <div class="comment-view">Comments: </div>
+                    <div class="border border-t-0 border-red-light rounded-b bg-red-lightest px-4 py-3 text-red-dark">
+                        <p>A lot of dangerous crime is documented in this area!</p>
                     </div>
                 </div>
-                <div class="w-1/3 bg-red ">graph of user opinions </div>
-            </div>
+                <div role="alert" id="yellowAlert2">
+                    <div class="bg-yellow text-black font-bold rounded-t px-4 py-2">
+                        Proceed with caution
+                    </div>
+                    <div class="border border-t-0 border-yellow-light rounded-b bg-yellow-lightest px-4 py-3 text-yellow-darker">
+                        <p>There is some dangerous crime that has been reported in this area!</p>
+                    </div>
+                </div>
+                <div role="alert" id="greenAlert2">
+                    <div class="bg-green text-black font-bold rounded-t px-4 py-2">
+                        You're clear :)
+                    </div>
+                    <div class="border border-t-0 border-green-light rounded-b bg-green-lightest px-4 py-3 text-green-dark">
+                        <p>There is no dangerous crime documented in this area <br> <strong>Remember: </strong><em>Always
+                                proceed with caution in
+                                new areas, remember that no documented crime does not guarantee safety</em>
+                        </p>
+                    </div>
+                </div>
+                <div role="alert" id="redAlert">
+                    <div class="bg-red text-black font-bold rounded-t px-4 py-2">
+                        Be aware of your surroundings!
+                    </div>
+                    <div class="border border-t-0 border-red-light rounded-b bg-red-lightest px-4 py-3 text-red-dark">
+                        <p>This area has a lot of theft and lower-degree crimes documented in this area. While they are
+                            not
+                            the most dangerous crimes, there is still plenty to mindful of here! Watch your valuables
+                            and
+                            pay close attention to your kids and loved ones!</p>
+                    </div>
+                </div>
+                <div role="alert" id="yellowAlert">
+                    <div class="bg-yellow text-black font-bold rounded-t px-4 py-2">
+                        Proceed with caution.
+                    </div>
+                    <div class="border border-t-0 border-yellow-light rounded-b bg-yellow-lightest px-4 py-3 text-yellow-darker">
+                        <p>There has been a high amount of theft and lower-degree crimes documented in this area,
+                            please be
+                            mindful of your things and loved ones!.</p>
+                    </div>
+                </div>
 
+                <div class="">Last Comment was: <span class="last-comment-view"></span></div>
+
+                <div class=""></div>
+
+            </div>
+            <!-- end of now container -->
+
+            <!-- Later container -->
+            <!-- this will display the area user looked for and will provide statistical charts  -->
+
+            <div class="w-3/4 bg-pink px-46 mx-4 rounded shadow-lg laterContainer">
+                <div class="w-full">
+                    <div class="  text-5xl" style="text-decoration: underline;">You looked up <span class="zipcode" id="zip-here2"></span>
+                        Zip code
+                    </div>
+
+                    <div class="graph bg-white">graph info
+                        <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+
+
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="w-2/3 bg-purple">
+                        <div class="map">
+                            <div id='map'></div>
+                        </div>
+                        <div id="inline-flex">
+                            <form>
+                                <label for="newComment">Add a comment about the area:</label>
+                                <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                    id="newComment" type="text" placeholder="I visited here and I felt it was...">
+                            </form>
+                            <button class="addComment bg-blue content-end mt-6 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">Add</button><br>
+                            <div class="comment-view">Comments: </div>
+                        </div>
+                    </div>
+                    <div class="w-1/3 bg-red ">graph of user opinions </div>
+                </div>
+
+            </div>
         </div>
-    </div>
 
 
 
         <div class="card" id="comment-view"></div>
-    </div>
+        <!-- </div> -->
 
-   <!-- other resource container -->
-   <div class="resourceContainer" >
-    <div class="slider slider_clock" >
-        <!-- slide 0 -Heimlich Manuever -->
-        <div class="slide1" id="s0">
-            <h4>Heimlich Manuever</h4>
-            <a href="" ></a>                
-            <img class="" src="./assets/images/Heimlich.jpg" alt="Police info" width="150px" height="100px">
-            <p></p>
-        </div>
+        <!-- other resource container -->
+        <div class="resourceContainer">
+            <div class="slider slider_clock">
+                <!-- slide 0 -Heimlich Manuever -->
+                <div class="slide1" id="s0">
+                    <h4>Heimlich Manuever</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/Heimlich.jpg" alt="Police info" width="150px" height="100px">
+                </div>
 
-        <!-- slide 1 CPR -->
-        <div class="slide1" id="s1">
-                <h4>CPR</h4>
-                <a href="" ></a>  
-                <img class=""  src="./assets/images/cpr.jpg" alt="Police info" width="150px" height="200px"></a>
+                <!-- slide 1 CPR -->
+                <div class="slide1" id="s1">
+                    <h4>CPR</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/cpr.jpg" alt="Police info" width="200px"></a>
+                </div>
+
+
+
+                <!-- slide 2 police -->
+                <div class="slide1" id="s2">
+                    <h4>Police</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/policeIcon.jpeg" alt="Police info" width="200px" height="200px"></a>
+                    <br>
+                    <br>
+                    <p>(888)-777-6666</p>
+                </div>
+
+                <!-- slide 3 fire rescue -->
+                <div class="slide1" id="s3">
+                    <h4>Fire Rescue</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/fireRescue.jpg" alt="Fire Department" width="200px" height="200px"></a>
+                    <br>
+                    <br>
+                    <p>(407)836-9000</p>
+                </div>
+
+                <!-- slide 4 red cross -->
+                <div class="slide1" id="s4">
+                    <h4>red cross</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/red-cross.png" alt="Red Cross" width="200px" height="200px"></a>
+                    <br>
+                    <br>
+                    <p>(407) 894-4141</p>
+                </div>
+                <!-- slide 5 Emergency Management -->
+                <div class="slide1" id="s5">
+                    <h4>Emergency Management</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/emergency-management.jpg" alt="Emergency Management" width="200px"
+                        height="200px"></a>
+                    <br>
+                    <br>
+                    <p>(407)246-4357</p>
+                </div>
+
+                <!-- slide 6 animal control -->
+                <div class="slide1" id="s6">
+                    <h4>Animal Control</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/animalControl.png" alt="Animal control" width="200px" height="200px"></a>
+                    <br>
+                    <br>
+                    <p>(407) 836-3111</p>
+                </div>
+                <!-- slide 7 hurrican preparedness -->
+                <div class="slide1" id="s7">
+                    <h4>Hurricane preparedness</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/hurricane-icon.jpg" alt="Hurricane preparedness" width="200px"
+                        height="200px"></a>
+                    <br>
+                    <br>
+                    <p>(407) 836-3111</p>
+                </div>
+
+                <!-- slide 8 mental health issues -->
+                <div class="slide1" id="s8">
+                    <h4>Mental Health</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/mental-health.png" alt="Mental Health Services" width="200px"
+                        height="200px"></a>
+                    <br>
+                    <br>
+                    <p>(407) 836-7608</p>
+                </div>
+
+                <!-- slide 9 suicide prevention -->
+                <div class="slide1" id="s9">
+                    <h4>Suicide Prevention</h4>
+                    <br>
+                    <a href=""></a>
+                    <img class="" src="./assets/images/suicideIcon.png" alt="Suicide Helpline" width="200px" height="200px"></a>
+                    <br>
+                    <br>
+                    <p>1-800-273-8255</p>
+                </div>
+
+
+                <div class="next_button"></div>
+                <div class="prev_button"></div>
             </div>
 
-
-
-        <!-- slide 2 police -->
-        <div class="slide1" id="s2">
-            <h4>Police</h4>
-            <a href="" ></a>  
-            <img class=""  src="./assets/images/policeIcon.jpeg" alt="Police info" width="200px" height="200px"></a>
-            <p>(888)-777-6666</p>
         </div>
-
-        <!-- slide 3 fire rescue -->
-        <div class="slide1" id="s3">
-            <h4>Fire Rescue</h4>
-            <a href="" ></a>  
-            <img class="" src="./assets/images/fireRescue.jpg" alt="Fire Department" width="200px" height="200px"></a>
-        </div>
-
-        <!-- slide 4 red cross -->
-        <div class="slide1" id="s4">
-            <h4>red cross</h4>
-            <a href="" ></a>  
-            <img class="" src="./assets/images/red-cross.png" alt="Red Cross" width="200px" height="200px"></a>
-        </div>
-        <!-- slide 5 Emergency Management -->
-        <div class="slide1" id="s5">
-            <h4>Emergency Management</h4>
-            <a href="" ></a>  
-            <img class="" src="./assets/images/emergency-management.jpg" alt="Emergency Management" width="200px"
-                height="200px"></a>
-        </div>
-
-        <!-- slide 6 animal control -->
-        <div class="slide1" id="s6">
-            <h4>Animal Control</h4>
-            <a href="" ></a>  
-            <img class="" src="./assets/images/animalControl.png" alt="Animal control" width="200px" height="200px"></a>
-
-        </div>
-        <!-- slide 7 hurrican preparedness -->
-        <div class="slide1" id="s7">
-            <h4>Hurricane preparedness</h4>
-            <a href="" ></a>  
-            <img class="" src="./assets/images/hurricane-icon.jpg" alt="Hurricane preparedness" width="200px"
-                height="200px"></a>
-        </div>
-
-        <!-- slide 8 mental health issues -->
-        <div class="slide1" id="s8">
-            <h4>Mental Health</h4>
-            <a href="" ></a>  
-            <img class="" src="./assets/images/mental-health.png" alt="Mental Health Services" width="200px" height="200px"></a>
-
-        </div>
-
-        <!-- slide 9 suicide prevention -->
-        <div class="slide1" id="s9"> 
-            <h4>Suicide Prevention</h4>
-            <a href="" ></a>  
-            <img class="" src="./assets/images/suicideIcon.png" alt="Suicide Helpline" width="200px" height="200px"></a>
-
-        </div>
-
-
-        <div class="next_button"></div>
-        <div class="prev_button"></div>
     </div>
+    <footer id="footer">
 
-</div>
+
+    </footer>
 
 
 
